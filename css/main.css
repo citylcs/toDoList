@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'SS Pro';
+  src: url("../fonts/SourceSansPro-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'SS Pro bold';
+  src: url("../fonts/SourceSansPro-Semibold.ttf");
+}
+
+form p {
+  font: 400 32px/60px SS Pro bold;
+  color: #333;
+}
+
+form label, form #toDoName, form button, form li {
+  font: 400 20px SS Pro bold;
+  color: #333;
+}
+
+#add:hover {
+  background: linear-gradient(to top, #0980ff, #6cb3fa);
+  border-color: #067eff;
+  color: #fff;
+}
+
+form p {
+  text-align: center;
+}
+
+form #toDoName {
+  margin-left: 10px;
+}
+
+form button {
+  border-radius: 4px;
+  border: 1px solid #b9b9b9;
+  background: #fff;
+  position: relative;
+  top: 2px;
+  left: 10px;
+  transition-duration: 1s;
+}
+
+form li {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#toDoList {
+  width: 500px;
+  height: 600px;
+  background-color: #eee;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 4px;
+}
+
+#defaultObj {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#placeHolder {
+  font: 400 22px/400px 'SS Pro bold';
+  color: #888;
+}

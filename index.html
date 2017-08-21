@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>particles.js</title>
+    <link rel="stylesheet" media="screen" href="css/style.css">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/lib/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<div id="particles-js"></div>
+<!--lib-->
+<script src="js/lib/particles.js"></script>
+<script src="js/lib/app.js"></script>
+<!--end-->
+<div id="container">
+    <form id="toDoList">
+        <p id="title">to do list</p>
+        <div id="defaultObj">
+            <label>todo:<input id="toDoName" type="text" /></label>
+            <button id="add">add</button>
+        </div>
+        <ul id="thing">
+            <li>go to supermarket <button>delete</button></li>
+        </ul>
+        <p id="placeHolder">nothing</p>
+    </form>
+</div>
+
+</body>
+<script>
+    function placeHolderCheck(){
+        let thing = document.getElementById('thing'),
+            placeHolder = $('#placeHolder');
+        if (thing.children.length !== 0) {
+            placeHolder.fadeOut(1000);
+        }
+        else {
+            placeHolder.fadeIn(1000);
+        }
+    }
+    placeHolderCheck();
+
+    function add() {
+        let add = document.getElementById('add'),
+            thingChild = document.getElementById('thing').child();
+    }
+</script>
+</html>
