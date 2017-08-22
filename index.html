@@ -14,15 +14,17 @@
 <script src="js/lib/particles.js"></script>
 <script src="js/lib/app.js"></script>
 <!--end-->
-<div id="container">
+<div id="container" >
     <form id="toDoList">
         <p id="title">to do list</p>
         <div id="defaultObj">
-            <label>todo:<input id="toDoName" type="text" /></label>
-            <button id="add">add</button>
+            <label>Title:<input id="toDoName" type="text" /></label>
+            <span id="add" role="button" onclick="Add();closeListener();fuck()">add</span>
         </div>
         <ul id="thing">
-            <li>go to supermarket <button>delete</button></li>
+            <li>Go to supermarket</li>
+            <li>Learn JavaScript</li>
+            <li>Buy Apple</li>
         </ul>
         <p id="placeHolder">nothing</p>
     </form>
@@ -30,21 +32,74 @@
 
 </body>
 <script>
+    let thing = document.getElementById('thing'),
+        li = thing.children,
+        add = document.getElementById('add'),
+        placeHolder = document.getElementById('placeHolder');
     function placeHolderCheck(){
-        let thing = document.getElementById('thing'),
-            placeHolder = $('#placeHolder');
+
         if (thing.children.length !== 0) {
-            placeHolder.fadeOut(1000);
+            placeHolder.style.display = 'none';
         }
         else {
-            placeHolder.fadeIn(1000);
+            placeHolder.style.display = 'block';
         }
     }
     placeHolderCheck();
 
-    function add() {
-        let add = document.getElementById('add'),
-            thingChild = document.getElementById('thing').child();
+
+    for (let i = 0;i < li.length;i++) {
+        let createSpan = document.createElement('span'),
+            createCloseNode = document.createTextNode('\u00d7');
+        createSpan.className = 'delete';
+        createSpan.appendChild(createCloseNode);
+        li[i].appendChild(createSpan);
     }
+
+    function Add(){
+        let inputVal = document.getElementById('toDoName').value,
+            input = document.getElementById('toDoName');
+        if (inputVal === '') {
+            input.setAttribute('placeholder','you must be input something!');
+        }
+        else {
+            let createLi = document.createElement('li'),
+                node = document.createTextNode(inputVal);
+            createLi.appendChild(node);
+            thing.appendChild(createLi);
+            for (let i = 0;i < li.length;i++) {
+                let createSpan = document.createElement('span'),
+                    createCloseNode = document.createTextNode('\u00d7');
+                createSpan.className = 'delete';
+                createSpan.appendChild(createCloseNode);
+                li[i].appendChild(createSpan);
+                input.value = '';
+                input.setAttribute('placeholder','');
+                placeHolderCheck();
+            }
+        }
+    }
+
+    function closeListener() {
+        let close = document.getElementsByClassName('delete');
+        for (let i = 0;i < close.length;i++){
+            close[i].onclick = function () {
+                let thisThing = this.parentElement;
+//                thisThing.style.display = 'none';
+                thisThing.style.transform = 'rotateX(90deg)';
+                setTimeout(function () {
+                    thisThing.remove();
+                    placeHolderCheck();
+                },1000);
+
+            }
+        }
+    }
+    closeListener();
+
+
+    
+
+
 </script>
 </html>

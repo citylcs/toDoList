@@ -17,7 +17,7 @@
   color: #333;
 }
 
-%buttonHover{
+%buttonActive{
   background: linear-gradient(to top, #0980ff, #6cb3fa);
   border-color: #067eff;
   color: #fff;
@@ -34,29 +34,47 @@ form{
   }
   #toDoName{
     @extend %fontGeneral;
-    margin-left: 10px;
-  }
-  button{
-    @extend %fontGeneral;
-    border-radius: 4px;
+    width: 270px;
+    height: 29px;
     border: 1px solid #b9b9b9;
-    background: #fff;
-    position: relative;
-    top: 2px;
-    left: 10px;
-    transition-duration: 1s;
+    border-right: none;
+    margin: 0 0 10px 10px;
+    border-radius: 4px 0 0 4px;
+    padding-left: 10px;
   }
   li{
+    cursor: pointer;
     @extend %fontGeneral;
-    text-align: center;
-    margin: 20px auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0 0 0 100px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #b9b9b9;
+    border-top: none;
+    width: 79.6%;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+  }
+  li:first-child{
+    border: 1px solid #b9b9b9;
+  }
+  li:nth-child(even){
+    background-color: #ffffff;
+  }
+  li:hover{
+    background-color: #a8a8a8;
   }
 }
 
 #toDoList{
   width: 500px;
   height: 600px;
-  background-color: #eee;
+  background-color: #ececec;
   position: absolute;
   top: 0;
   right: 0;
@@ -68,13 +86,48 @@ form{
 
 #defaultObj{
   width: 400px;
-  margin: 0 auto;
+  margin: 0 0 0 30px;
 }
 #placeHolder{
   font: 400 22px/400px 'SS Pro bold';
   color: #888;
 }
-
-#add:hover{
-  @extend %buttonHover;
+#add{
+  @extend %fontGeneral;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  line-height: 31px;
+  display: block;
+  width: 110px;
+  background-color: #fff;
+  height: 31px;
+  position: absolute;
+  top: 60px;
+  right: 31px;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid #b9b9b9;
 }
+#add:active{
+  @extend %buttonActive;
+}
+.delete{
+  @extend %fontGeneral;
+  color: #ff6058;
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50% 0 0 50%;
+  width: 70px;
+  text-align: center;
+  background-color: #d0d0d0;
+  transition-duration: 1s;
+}
+
+.delete:hover{
+  background-color: #ff6058;
+  color: #f2f2f2;
+}
+
