@@ -24,12 +24,20 @@ form label, form #toDoName, form li, #add, .delete {
   color: #fff;
 }
 
+form p, form label, form li {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 form p {
   text-align: center;
+  cursor: default;
 }
 
 form #toDoName {
-  width: 270px;
+  width: 561px;
   height: 29px;
   border: 1px solid #b9b9b9;
   border-right: none;
@@ -38,30 +46,32 @@ form #toDoName {
   padding-left: 10px;
 }
 
+form #toDoName:focus {
+  outline: none;
+}
+
 form li {
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 0 0 0 100px;
   height: 50px;
   line-height: 50px;
   border: 1px solid #b9b9b9;
   border-top: none;
-  width: 79.6%;
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
+  width: 87%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 form li:first-child {
   border: 1px solid #b9b9b9;
 }
 
-form li:nth-child(even) {
-  background-color: #ffffff;
+form li:nth-child(odd) {
+  background-color: #f5f5f5;
 }
 
 form li:hover {
@@ -69,7 +79,7 @@ form li:hover {
 }
 
 #toDoList {
-  width: 500px;
+  width: 800px;
   height: 600px;
   background-color: #ececec;
   position: absolute;
@@ -82,13 +92,24 @@ form li:hover {
 }
 
 #defaultObj {
-  width: 400px;
+  width: 700px;
   margin: 0 0 0 30px;
 }
 
 #placeHolder {
   font: 400 22px/400px 'SS Pro bold';
   color: #888;
+  position: absolute;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 #add {
@@ -121,7 +142,30 @@ form li:hover {
   transition-duration: 1s;
 }
 
+#thing {
+  position: relative;
+}
+
 .delete:hover {
   background-color: #ff6058;
   color: #f2f2f2;
+}
+
+.check {
+  color: #1da1f2;
+}
+
+#scroll {
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #888888;
 }

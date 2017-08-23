@@ -2,104 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>particles.js</title>
+    <title>to do list</title>
     <link rel="stylesheet" media="screen" href="css/style.css">
-    <title></title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/lib/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 <div id="particles-js"></div>
-<!--lib-->
-<script src="js/lib/particles.js"></script>
-<script src="js/lib/app.js"></script>
-<!--end-->
 <div id="container" >
     <form id="toDoList">
         <p id="title">to do list</p>
         <div id="defaultObj">
-            <label>Title:<input id="toDoName" type="text" /></label>
-            <span id="add" role="button" onclick="Add();closeListener();fuck()">add</span>
+            <label>Title:<input id="toDoName" type="text" maxlength="60" /></label>
+            <span id="add" role="button" onclick="Add();closeListener()">add</span>
         </div>
-        <ul id="thing">
-            <li>Go to supermarket</li>
-            <li>Learn JavaScript</li>
-            <li>Buy Apple</li>
-        </ul>
+        <div id="scroll">
+            <ul id="thing">
+                <li>Go to supermarket</li>
+                <li>Learn JavaScript</li>
+                <li>Buy Apple</li>
+            </ul>
+        </div>
         <p id="placeHolder">nothing</p>
     </form>
 </div>
-
 </body>
-<script>
-    let thing = document.getElementById('thing'),
-        li = thing.children,
-        add = document.getElementById('add'),
-        placeHolder = document.getElementById('placeHolder');
-    function placeHolderCheck(){
-
-        if (thing.children.length !== 0) {
-            placeHolder.style.display = 'none';
-        }
-        else {
-            placeHolder.style.display = 'block';
-        }
-    }
-    placeHolderCheck();
-
-
-    for (let i = 0;i < li.length;i++) {
-        let createSpan = document.createElement('span'),
-            createCloseNode = document.createTextNode('\u00d7');
-        createSpan.className = 'delete';
-        createSpan.appendChild(createCloseNode);
-        li[i].appendChild(createSpan);
-    }
-
-    function Add(){
-        let inputVal = document.getElementById('toDoName').value,
-            input = document.getElementById('toDoName');
-        if (inputVal === '') {
-            input.setAttribute('placeholder','you must be input something!');
-        }
-        else {
-            let createLi = document.createElement('li'),
-                node = document.createTextNode(inputVal);
-            createLi.appendChild(node);
-            thing.appendChild(createLi);
-            for (let i = 0;i < li.length;i++) {
-                let createSpan = document.createElement('span'),
-                    createCloseNode = document.createTextNode('\u00d7');
-                createSpan.className = 'delete';
-                createSpan.appendChild(createCloseNode);
-                li[i].appendChild(createSpan);
-                input.value = '';
-                input.setAttribute('placeholder','');
-                placeHolderCheck();
-            }
-        }
-    }
-
-    function closeListener() {
-        let close = document.getElementsByClassName('delete');
-        for (let i = 0;i < close.length;i++){
-            close[i].onclick = function () {
-                let thisThing = this.parentElement;
-//                thisThing.style.display = 'none';
-                thisThing.style.transform = 'rotateX(90deg)';
-                setTimeout(function () {
-                    thisThing.remove();
-                    placeHolderCheck();
-                },1000);
-
-            }
-        }
-    }
-    closeListener();
-
-
-    
-
-
-</script>
+<script src="js/main.js"></script>
+<script src="js/lib/particles.js"></script>
+<script src="js/lib/app.js"></script>
 </html>
